@@ -24,19 +24,15 @@
       },
       {
         "title": "𝑖",
-        "command": "vscode-touch-bar-ext.toggleItalics"
-      },
-      {
-        "title": "•",
-        "command": "vscode-touch-bar-ext.toggleUList"
-      },
-      {
-        "title": "⒈",
-        "command": "vscode-touch-bar-ext.toggleOList"
+        "command": "vscode-touch-bar-ext.toggleItalic"
       },
       {
         "title": "=",
-        "command": "vscode-touch-bar-ext.toggleMark"
+        "command": "vscode-touch-bar-ext.toggleList"
+      },
+      {
+        "title": "📋",
+        "command": "vscode-touch-bar-ext.toggleCheckTaskList"
       },
       {
         "title": "–",
@@ -102,7 +98,7 @@
       },
       {
         "title": "✍︎",
-        "command": "vscode-touch-bar-ext.editor.changeLanguageMode"
+        "command": "vscode-touch-bar-ext.changeLanguageMode"
       },
       {
         "title": "📝",
@@ -120,13 +116,12 @@
           "type": "object",
           "description": "Command ID Prefixes and Names",
           "default": {
-            "markdownExtended": [
+            "markdown.extension.editing": [
               "toggleBold",
-              "toggleItalics",
-              "toggleUList",
-              "toggleOList",
-              "toggleMark",
-              "toggleStrikethrough",
+              "toggleItalic",
+              "toggleList",
+              "toggleCheckTaskList",
+              "toggleStrikeThrough",
               "toggleUnderline",
               "toggleSuperscript",
               "toggleSubscript"
@@ -137,6 +132,9 @@
             ],
             "workbench.action.debug": [
               "restart"
+            ],
+            "workbench.action.editor": [
+              "changeLanguageMode"
             ],
             "editor.action": [
               "quickFix",
@@ -149,47 +147,37 @@
     "menus": {
       "touchBar": [
         {
-          "command": "vscode-touch-bar-ext.toggleBold",
-          "group": "a@1",
-          "when": "editorLangId==markdown"
-        },
-        {
-          "command": "vscode-touch-bar-ext.toggleItalics",
-          "group": "a@2",
-          "when": "editorLangId==markdown"
-        },
-        {
-          "command": "vscode-touch-bar-ext.toggleMark",
-          "group": "a@3",
-          "when": "editorLangId==markdown"
-        },
-        {
-          "command": "vscode-touch-bar-ext.toggleUList",
-          "group": "a@4",
-          "when": "editorLangId==markdown"
-        },
-        {
-          "command": "vscode-touch-bar-ext.toggleOList",
-          "group": "a@5",
-          "when": "editorLangId==markdown"
-        },
-
-        {
           "command": "vscode-touch-bar-ext.showCommands",
-          "group": "b@1"
+          "group": "a@1"
         },
         {
           "command": "vscode-touch-bar-ext.togglePanel",
-          "group": "b@2"
+          "group": "a@2"
         },
         {
           "command": "vscode-touch-bar-ext.restart",
-          "group": "b@3"
+          "group": "a@3"
         },
         {
-          "command": "vscode-touch-bar-ext.editor.changeLanguageMode",
-          "group": "b@6",
+          "command": "vscode-touch-bar-ext.changeLanguageMode",
+          "group": "a@6",
           "when": "editorLangId==plaintext"
+        },
+
+        {
+          "command": "vscode-touch-bar-ext.toggleBold",
+          "group": "b@1",
+          "when": "editorLangId==markdown"
+        },
+        {
+          "command": "vscode-touch-bar-ext.toggleItalic",
+          "group": "b@2",
+          "when": "editorLangId==markdown"
+        },
+        {
+          "command": "vscode-touch-bar-ext.toggleList",
+          "group": "b@3",
+          "when": "editorLangId==markdown"
         },
 
         {
