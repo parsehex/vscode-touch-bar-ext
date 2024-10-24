@@ -5,27 +5,26 @@ import * as vscode from 'vscode';
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log(
-		'Congratulations, your extension "vscode-touch-bar-ext" is now active!'
-	);
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand(
-		'vscode-touch-bar-ext.helloWorld',
-		() => {
-			// The code you place here will be executed every time your command is executed
-			// Display a message box to the user
-			vscode.window.showInformationMessage(
-				'Hello World from Custom Touch Bar!'
-			);
+	const cmd = vscode.commands,
+		sub = context.subscriptions,
+		cfg = vscode.workspace.getConfiguration('vscode-touch-bar-ext.commands');
+	console.log('Activating vscode-touch-bar-ext');
+	Object.keys(cfg).forEach((key) => {
+		const val = cfg[key];
+		if (Array.isArray(val)) {
+			val.forEach((itm) => {
+				console.log(
+					'Registering command: ' + key + '.' + itm,
+					`(${'vscode-touch-bar-ext.' + itm})`
+				);
+				sub.push(
+					cmd.registerCommand('vscode-touch-bar-ext.' + itm, () => {
+						cmd.executeCommand(key + '.' + itm);
+					})
+				);
+			});
 		}
-	);
-
-	context.subscriptions.push(disposable);
+	});
 }
 
 // This method is called when your extension is deactivated
