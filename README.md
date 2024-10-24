@@ -15,3 +15,9 @@ Leaving notes to myself to discern what to do here:
   - The extension registers the command `vscode-touch-bar-ext.restart`
   - `contributes.commands` is where the title/icon can be changed
   - The command should be present in `contributes.menus.touchBar` to show up in the touch bar and under certain conditions
+
+## Using
+
+- `npm install` to install the dependencies
+- `npx vsce package` to create the .vsix file
+- `code --install-extension vscode-touch-bar-ext-0.0.1.vsix` to install the extension
